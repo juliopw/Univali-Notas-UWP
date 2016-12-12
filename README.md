@@ -1,4 +1,4 @@
-# Univali-Notas-UWP
+# Univali Notas UWP
 A unreleased Windows 10 app that displays student grades. 
 Um aplicativo do Windows 10 não lançado que exibe notas de alunos. 
 
