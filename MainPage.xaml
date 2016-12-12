@@ -1,0 +1,170 @@
+﻿<Page
+    x:Class="Notas.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Notas"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Background>
+        <SolidColorBrush Color="#05559C"/>
+    </Page.Background>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <Grid Grid.Row="0" Background="#05559C">
+            <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="16" Content="&#xE700;" Width="50" Height="40" Background="#05559C" Foreground="White" Click="HamburgerButton_Click" BorderThickness="0"/>
+            <TextBlock Text="NOTAS" Foreground="White" Margin="0" FontSize="16" FontFamily="Ebrima" FontWeight="ExtraBold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <SplitView x:Name="MySplitView" Grid.Row="1" DisplayMode="Overlay" IsPaneOpen="False" 
+               CompactPaneLength="40" OpenPaneLength="250">
+            <SplitView.Pane>
+                <Grid Background="White" BorderThickness="0,0,1,0" BorderBrush="#FF072F5B" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton1" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE171;"
+                    Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Notas Recentes" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton3" FontSize="16" FontFamily="Segoe MDL2 Assets" Content="&#xE748;" Width="50" Height="50"  Foreground="#072F5B" Background="Transparent"/>
+                                <TextBlock Text="Meus Cursos" FontSize="16" FontFamily="Ebrima"  Foreground="#072F5B"  VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton4" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE161;"
+                    Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Ano/Semestre: 2015-2" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton8" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE825;"
+                    Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Institucional" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton7" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE12B;"
+                    Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="univali.br" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <ScrollViewer  Grid.Row="1"  VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
+                            <StackPanel Tapped="HamburgerConfig_Tapped" Orientation="Horizontal" VerticalAlignment="Bottom">
+                                <Button x:Name="MenuButton5" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE115;"
+                    			Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Configurações" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                                <Button x:Name="MenuButton6" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE1E0;"
+                    			Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Sair" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                    
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+
+                <!--TODO: Content should be placed within the following grid-->
+                <Grid Background="#072F5B" x:Name="ContentRoot" Margin="0,0,0,-1">
+                    <Grid.ChildrenTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </Grid.ChildrenTransitions>
+
+                    <ListView Name="lvDataBinding" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollMode="Enabled">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                <Setter Property="Padding" Value="0" />
+                                <Setter Property="Margin" Value="10,10,10,0" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Background="#FF074487" Tapped="AppBarButton_Click" VerticalAlignment="Top" Height="80" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding NomeMateria}" Grid.Column="0" Grid.Row="0" Name="Materia" Margin="15,0,0,0" VerticalAlignment="Center" FontFamily="Ebrima" HorizontalAlignment="Left" Width="250" Foreground="White"/>
+                                    <Grid Grid.Column="0" Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Grid Tapped="M1_Item_Tapped" Grid.Column="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="M1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" Foreground="#7FFFFFFF"/>
+                                            <TextBlock Text="{Binding MediaFinal}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Foreground="White" Margin="5,0,0,0"/>
+                                        </Grid>
+                                        <Grid Tapped="M2_Item_Tapped" Grid.Column="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="M2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" Foreground="#7FFFFFFF"/>
+                                            <TextBlock Text="{Binding MediaFinal}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Foreground="White" Margin="5,0,0,0"/>
+                                        </Grid>
+                                        <Grid Tapped="M3_Item_Tapped" Grid.Column="2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="M3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" TextAlignment="Center" Foreground="#7FFFFFFF"/>
+                                            <TextBlock Text="{Binding MediaFinal}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center" Foreground="White" Margin="5,0,0,0"/>
+                                        </Grid>
+                                    </Grid>
+                                    <TextBlock Text="{Binding MediaFinal}" Grid.Column="1" Grid.Row="0" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Ebrima" TextAlignment="Right" HorizontalAlignment="Right" Width="100" Foreground="White"/>
+                                    <TextBlock Text="{Binding Faltas}" Grid.Column="1" Grid.Row="1" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Ebrima" TextAlignment="Right" Foreground="White" HorizontalAlignment="Right" Width="100"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+
+
+    <!-- App Bar -->
+    <Page.BottomAppBar>
+        <CommandBar Background="#05559C" Foreground="White" ClosedDisplayMode="Minimal">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Label="Refresh" Icon="Refresh" FontFamily="Ebrima" FontWeight="Bold" Click="AppBarButton_Click" Foreground="White"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Atualizar" FontSize="16" FontFamily="Ebrima"/>
+                <AppBarButton Label="Login" FontSize="16" FontFamily="Ebrima" Click="GoToLogin_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+</Page>

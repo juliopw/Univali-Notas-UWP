@@ -1,0 +1,169 @@
+﻿<Page
+    x:Class="Notas.Detalhes"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Notas"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Background>
+        <SolidColorBrush Color="#05559C"/>
+    </Page.Background>
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <Grid Grid.Row="0" Background="#05559C">
+            <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" FontSize="16" Content="&#xE700;" Width="50" Height="40" Background="#05559C" Foreground="White" Click="HamburgerButton_Click" BorderThickness="0"/>
+            <TextBlock Text="DETALHES" Foreground="White" Margin="0" FontSize="16" FontFamily="Ebrima" FontWeight="ExtraBold" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <SplitView x:Name="MySplitView" Grid.Row="1" DisplayMode="Overlay" IsPaneOpen="False" 
+               CompactPaneLength="40" OpenPaneLength="250">
+            <SplitView.Pane>
+                <Grid Background="White" BorderThickness="0,0,1,0" BorderBrush="#FF072F5B" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton1" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE171;"
+                    Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Notas Recentes" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton2" FontSize="16"  Foreground="#072F5B" FontFamily="Segoe MDL2 Assets" Content="&#xEA65;"
+                        Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Notas" FontSize="16" FontFamily="Ebrima"  Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton3" FontSize="16" FontFamily="Segoe MDL2 Assets" Content="&#xE748;" Width="50" Height="50"  Foreground="#072F5B" Background="Transparent"/>
+                                <TextBlock Text="Meus Cursos" FontSize="16" FontFamily="Ebrima"  Foreground="#072F5B"  VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton4" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE161;"
+                    Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Ano/Semestre: 2015-2" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton8" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE825;"
+                    Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Institucional" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="MenuButton7" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE12B;"
+                    Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="univali.br" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <ScrollViewer  Grid.Row="1"  VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
+                            <StackPanel Tapped="HamburgerConfig_Tapped" Orientation="Horizontal" VerticalAlignment="Bottom">
+                                <Button x:Name="MenuButton5" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE115;"
+                    			Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Configurações" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                                <Button x:Name="MenuButton6" FontSize="16" FontFamily="Segoe MDL2 Assets" Foreground="#072F5B" Content="&#xE1E0;"
+                    			Width="50" Height="50" Background="Transparent"/>
+                                <TextBlock Text="Sair" FontSize="16" FontFamily="Ebrima" Foreground="#072F5B" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+
+                <!--TODO: Content should be placed within the following grid-->
+                <Grid Grid.Row="1" Background="#072F5B" x:Name="ContentRoot" Margin="0,0,0,-1">
+                    <Grid.ChildrenTransitions>
+                        <TransitionCollection>
+                            <EntranceThemeTransition/>
+                        </TransitionCollection>
+                    </Grid.ChildrenTransitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Background="#05559C" Margin="10,10,10,0" VerticalAlignment="Top" Height="70">
+                        <TextBlock Text="NOME DA MATERIA" Name="Materia" Margin="15,10,0,36" FontFamily="Ebrima" HorizontalAlignment="Left" Width="250" VerticalAlignment="Top" Foreground="White"/>
+                        <TextBlock Text="MF=(M1+M2+M3)/3" Margin="15,36,0,10" FontFamily="Ebrima" HorizontalAlignment="Left" Width="250" Foreground="#072F5B" VerticalAlignment="Bottom"/>
+                        <TextBlock Text="MF" Margin="0,10,15,0" VerticalAlignment="Top" FontFamily="Ebrima" TextAlignment="Right" HorizontalAlignment="Right" Width="100" Foreground="White"/>
+                        <TextBlock Text="N FALTAS" Margin="0,0,15,10" VerticalAlignment="Bottom" FontFamily="Ebrima" TextAlignment="Right" Foreground="White" HorizontalAlignment="Right" Width="100"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="0,10,0,0">
+                        <Grid Grid.Row="1" Margin="10,0,10,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Name="M1_Grid" Tapped="M1_Tapped" Height="60" Grid.Column="0" Grid.Row="0" Background="#05559C">
+                                <TextBlock Text="M1" Foreground="White" Margin="0,8,0,0" Width="124" VerticalAlignment="Top" TextAlignment="Center"/>
+                                <TextBlock Text="Nota M1" Margin="0,0,0,8" Width="124" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="White"/>
+                            </Grid>
+                            <Grid Name="M2_Grid" Tapped="M2_Tapped" Height="60" Grid.Column="1" Grid.Row="0" Background="#073A72">
+                                <TextBlock Text="M2" Foreground="White" Margin="0,8,0,0" VerticalAlignment="Top" TextAlignment="Center"/>
+                                <TextBlock Text="Nota M2" Margin="0,0,0,8" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="White"/>
+                            </Grid>
+                            <Grid Name="M3_Grid" Tapped="M3_Tapped" Height="60" Grid.Column="2" Grid.Row="0" Margin="0" Background="#073A72">
+                                <TextBlock Text="M3" Foreground="White" Margin="0,8,0,0" Width="124" VerticalAlignment="Top" TextAlignment="Center"/>
+                                <TextBlock Text="Nota M3" Margin="0,0,0,8" VerticalAlignment="Bottom" TextAlignment="Center" Foreground="White"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+
+
+                    <Grid Name="M1_Content" Grid.Row="2" Background="#05559C" Margin="10,0,10,10" Visibility="Visible">
+                        <ScrollViewer HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled">
+                            <TextBlock Name="Campo" Text="Nota M1" Margin="10,10" Foreground="White"/>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid Name="M2_Content" Grid.Row="2" Background="#05559C" Margin="10,0,10,10" Visibility="Collapsed">
+                        <ScrollViewer HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled">
+                            <TextBlock Text="Nota M2" Margin="10,10" Foreground="White" TextAlignment="Justify"/>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid Name="M3_Content" Grid.Row="2" Background="#05559C" Margin="10,0,10,10" Visibility="Collapsed">
+                        <ScrollViewer HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled">
+                            <TextBlock Text="Nota M3" Margin="10,10" Foreground="White" TextAlignment="Justify"/>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
+
+
+    <!-- App Bar -->
+    <Page.BottomAppBar>
+        <CommandBar Background="#05559C" Foreground="White" ClosedDisplayMode="Minimal">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Label="Atualizar" Icon="Refresh" Click="Reload_Click" Foreground="White"/>
+                <AppBarButton Label="Início" Icon="Home" Click="GoHome_Click" Foreground="White"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Atualizar"/>
+                <AppBarButton Label="Sobre"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

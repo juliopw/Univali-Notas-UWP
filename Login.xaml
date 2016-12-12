@@ -1,0 +1,99 @@
+﻿<Page
+    x:Class="Notas.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Notas"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Background>
+        <SolidColorBrush Color="#05559C"/>
+    </Page.Background>
+
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <Grid Grid.Row="0" Background="#05559C">
+            <TextBlock Text="LOGIN" Foreground="White" FontSize="16" FontFamily="Ebrima" FontWeight="ExtraBold" Margin="0" Height="25" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <!--TODO: Content should be placed within the following grid-->
+
+
+        <Grid Grid.Row="1" Background="#072F5B" x:Name="ContentRoot" Margin="0,0,0,-1">
+            <Grid.ChildrenTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </Grid.ChildrenTransitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled">
+                <Grid Height="150" HorizontalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Width="250" Height="30" Background="White">
+                        <TextBox Name="CodPessoa" FontSize="16" FontFamily="Ebrima" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" InputScope="Number" BorderThickness="0" PlaceholderText="Código de pessoa" Background="White" BorderBrush="White" Foreground="#FF072F5B" IsDoubleTapEnabled="False" />
+                    </Grid>
+                    <Grid Grid.Row="1" Width="250" Height="30" Background="White">
+                        <PasswordBox Name="Senha" Height="30" FontSize="16" FontFamily="Ebrima" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="250" BorderThickness="0" PlaceholderText="Senha" Background="White" BorderBrush="White" Foreground="#FF072F5B" />
+                    </Grid>
+                    
+                    <Grid Grid.Row="2" Height="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Name="BotaoEntrar" Content="ENTRAR" FontSize="13" FontWeight="ExtraBold" FontFamily="Ebrima" Click="Login_Click" Grid.Column="1" Foreground="White" Opacity="100" Background="#05559C" Height="30" BorderThickness="0" HorizontalAlignment="Stretch"/>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+
+            <Grid Grid.Row="1" Tapped="BotaoTermos_Tapped" >
+                <RichTextBlock Name="BotaoTermos" Margin="20" TextAlignment="Justify" Foreground="#FF79CDFF" IsTextSelectionEnabled="False" HorizontalAlignment="Center" Visibility="Visible" VerticalAlignment="Bottom">
+                    <Paragraph FontSize="13" FontFamily="Ebrima" FontWeight="ExtraBold">
+                        TERMOS DE USO
+                    </Paragraph>
+                </RichTextBlock>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden" VerticalScrollMode="Enabled">
+                    <RichTextBlock Name="Termos" MaxHeight="400" Margin="20" TextAlignment="Justify" HorizontalAlignment="Stretch" IsTextSelectionEnabled="False" Visibility="Collapsed" VerticalAlignment="Top" Foreground="#BFFFFFFF">
+                        <Paragraph FontSize="13" FontFamily="Ebrima">
+                            Suas informações (como código de pessoa, senha e notas) são guardadas de forma segura e não são utilizadas para outros fins.
+                        </Paragraph>
+                        <Paragraph FontSize="13" FontFamily="Ebrima">
+                            O aplicativo é independente e não possui vínculo com a instituição de ensino.
+                            O desenvolvedor não se responsabiliza por qualquer dano relacionado ao uso do app.
+                        </Paragraph>
+                    </RichTextBlock>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+
+
+    <!-- App Bar -->
+    <Page.BottomAppBar>
+        <CommandBar Background="#05559C" Foreground="White" ClosedDisplayMode="Minimal">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Label="Sobre"/>
+                <AppBarButton Label="Login" Click="GoToHome_Click"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>
